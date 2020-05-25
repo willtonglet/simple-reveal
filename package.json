@@ -1,0 +1,22 @@
+{
+  "name": "react-simple-reveal",
+  "version": "0.1.20",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "tsc && echo 'Finished building NPM package'"
+  },
+  "author": "William Tonglet",
+  "license": "ISC",
+  "types": "index.d.ts",
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "@material-ui/styles": "^4.10.0",
+    "clsx": "^1.1.0"
+  }
+}
