@@ -1,74 +1,8 @@
 import * as React from "react";
-import { makeStyles } from "@material-ui/styles";
 import clsx from "clsx";
 import useOnScreen from "./hook/useOnScreen";
 import useWindowSize from "./hook/useWindowSize";
-
-const useStyles = makeStyles({
-  simpleReveal: {
-    opacity: 0,
-    animationFillMode: "forwards",
-  },
-  centered: {
-    animationName: "fadeIn",
-  },
-  left: {
-    animationName: "fadeIn, left",
-  },
-  right: {
-    animationName: "fadeIn, left",
-  },
-  top: {
-    animationName: "fadeIn, left",
-  },
-  bottom: {
-    animationName: "fadeIn, left",
-  },
-  none: {
-    animationName: "nonet",
-  },
-
-  "@keyframes fadeIn": {
-    "0%": {
-      opacity: 0,
-    },
-    "100%": {
-      opacity: 1,
-    },
-  },
-  "@keyframes left": {
-    "0%": {
-      transform: "translateX(-30vh)",
-    },
-    "100%": {
-      transform: "translateX(0)",
-    },
-  },
-  "@keyframes right": {
-    "0%": {
-      transform: "translateX(30vh)",
-    },
-    "100%": {
-      transform: "translateX(0)",
-    },
-  },
-  "@keyframes top": {
-    "0%": {
-      transform: "translateY(-30vh)",
-    },
-    "100%": {
-      transform: "translateY(0)",
-    },
-  },
-  "@keyframes bottom": {
-    "0%": {
-      transform: "translateY(30vh)",
-    },
-    "100%": {
-      transform: "translateY(0)",
-    },
-  },
-});
+import styles from "./styles.module.scss";
 
 const SimpleReveal: React.FC<RevealProps> = (props: RevealProps) => {
   const {
@@ -80,18 +14,18 @@ const SimpleReveal: React.FC<RevealProps> = (props: RevealProps) => {
     delay = 0,
   } = props;
 
-  const styles = useStyles();
-
   const revealRef = React.useRef<HTMLDivElement>(null);
   const onScreen = useOnScreen(revealRef);
   const size = useWindowSize();
   const mq = { mobile: 375 };
 
   const renderReveal = clsx(
-    styles.simpleReveal,
+    styles["reveal-transition"],
     onScreen &&
       styles[
-        mobilePosition && size.width <= mq.mobile ? mobilePosition : position
+        `reveal-transition__${
+          mobilePosition && size.width <= mq.mobile ? mobilePosition : position
+        }`
       ]
   );
 
